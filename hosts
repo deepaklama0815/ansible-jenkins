@@ -1,0 +1,16 @@
+vim hosts
+
+# hosts
+[all]
+jenkins master ip
+jenkins agent ip
+jenkins target ip
+
+[master]
+jenkins master ip
+
+[agent]
+jenkins agent ip
+
+[target]
+jenkins target ip
