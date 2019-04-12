@@ -61,7 +61,7 @@
           mode: 0644
 
       - name: untarring the tar file on target
-        shell: "tar -xvzf /opt/jdk-8u201-linux-x64.tar.gz"
+        shell: "tar -xvzf /home/ec2-user/jdk-8u201-linux-x64.tar.gz"
 
       - name: installing java
         shell: "alternatives --install /usr/bin/java java /home/ec2-user/jdk1.8.0_201/bin/java 1"
