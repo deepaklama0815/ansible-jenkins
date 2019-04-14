@@ -49,7 +49,7 @@
 
 
 - name: openjdk installation in agent
-  hosts: agent target
+  hosts: all
   become: true
   tasks:
 
@@ -57,7 +57,7 @@
       - name: copying the jdk file to target machine
         copy:
           src: /opt/jdk-8u201-linux-x64.tar.gz
-          dest: /home/ec2-user/jdk-8u201-linux-x64.tar.gz
+          dest: /home-ec2-user/jdk-8u201-linux-x64.tar.gz
           mode: 0644
 
       - name: untarring the tar file on target
@@ -88,13 +88,13 @@
             state: present
         - name: downloading maven
           get_url:
-            url: http://mirror.cc.columbia.edu/pub/software/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
+	    http://us.mirrors.quenda.co/apache/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz
             dest: /opt
         - name: untarring maven
-          shell: chdir=/opt creates=/opt/apache-maven-3.6.0 tar -zxf apache-maven-3.6.0-bin.tar.gz -C .
+          shell: chdir=/opt creates=/opt/apache-maven-3.6.1 tar -zxf apache-maven-3.6.1-bin.tar.gz -C .
         - name: giving path to maven home
-          shell: export PATH=$PATH:/opt/apache-maven-3.6.0/bin
+          shell: export PATH=$PATH:/opt/apache-maven-3.6.1/bin
         - name: updating .bashrc
-          shell: . /home/ec2-user/.bashrc && export PATH=$PATH:/opt/apache-maven-3.6.0/bin
+          shell: . /home/ec2-user/.bashrc && export PATH=$PATH:/opt/apache-maven-3.6.1/bin
       tags:
         - maven
